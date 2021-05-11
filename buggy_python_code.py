@@ -29,6 +29,10 @@ class RunBinSh(object):
 @app.route('/')
 def index():
     module = flask.request.args.get("module")
+    tmp = module.split();
+    module  = ""
+    for a in tmp:
+        module += "'" + a + "' "
     exec("import urllib%s as urllib" % module)  # Noncompliant
 
 
